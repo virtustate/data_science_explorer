@@ -1,0 +1,188 @@
+{% load static %}
+{% load bootstrap4 %}
+{% load analytical %}
+{% load django_bootstrap_breadcrumbs %}
+{% load fontawesome_5 %}
+{% load sass_tags %}
+{% load base_tags  %}
+{# HTML5 declaration #}
+<!doctype html>
+<html lang="en">
+{# Make modifiable head elements #}
+<head>
+    {% analytical_head_top %}
+    <title>{% block title %}base title, please override {% endblock title %} | Dataset Explorer</title>
+    {% block head_favicon %}
+        <link rel="icon" type="image/png" href="{% static 'base/images/favicon.png' %}">
+    {% endblock head_favicon %}
+    {% block head_meta %}
+        {% block head_meta_charset %}
+            <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        {% endblock head_meta_charset %}
+        {% block head_meta_contentlanguage %}
+            <meta http-equiv="Content-Language" value="en-US" />
+        {% endblock head_meta_contentlanguage %}
+        {% block head_meta_viewport %}
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {% endblock head_meta_viewport %}
+    {% endblock head_meta %}
+    {% block head_css %}
+        {% block head_css_site %}
+            {% bootstrap_css %}
+            <link rel="stylesheet" type="text/css" href="{% static 'admin/css/base.css' %}">
+            <link rel="stylesheet" type="text/css" href="{% static 'admin/css/forms.css' %}">
+            <link href="{% sass_src 'base/css/site.scss' %}" rel="stylesheet" type="text/css" />
+        {% endblock head_css_site %}
+        {% block head_css_section %}{% endblock head_css_section %}
+        {% block head_css_page %}{% endblock head_css_page %}
+    {% endblock head_css %}
+    {# Set of blocks that can be used to display JavaScript files #}
+    {% block javascript %}
+        {% block javascript_site %}
+            {% bootstrap_javascript jquery='full' %}
+            <script type="text/javascript" src='/admin/jsi18n/'></script>
+            <script src="{% static 'js/jquery.bootstrap.modal.forms.min.js' %}"></script>
+            <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+            <script src="{% static 'base/js/site.js' %}"></script>
+        {% endblock javascript_site %}
+        {% block javascript_section %}{% endblock javascript_section %}
+        {% block javascript_page %}
+            <script type="text/javascript">
+                function pagejq() {}
+            </script>
+        {% endblock javascript_page %}
+    {% endblock javascript %}
+    {{ form.media }}
+    {% analytical_head_bottom %}
+    {% block head_page %}
+    {% endblock %}
+</head>
+<body>
+{% analytical_body_top %}
+{# Navigation Menu #}
+<nav class="navbar navbar-dark navbar-expand-sm fixed-top">
+    <div class="container">
+        <div class="row row-content justify-content-center">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="Navbar">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item"><a class="nav-link navhome" href="/"><span class="fa fa-home fa-lg"></span> Home</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link navconnect dropdown-toggle" data-toggle="dropdown" href="/connect" id="navconnect">
+                            <span class="fa fa-list fa-lg"></span> Connect
+                        </a>
+                        <div class="dropdown-menu navbar-dark" aria-labelledby="navconnect">
+                            <a class="dropdown-item" href="/connect">Connect</a>
+                            <a class="dropdown-item" href="/DatasetList">&nbsp;&nbsp;AttributionTool</a>
+                            <a class="dropdown-item" href="/ISpot">&nbsp;&nbsp;iSpot</a>
+                            <a class="dropdown-item" href="/WAMPerSecond">&nbsp;&nbsp;Second Granularity WAM</a>
+                            <a class="dropdown-item">&nbsp;&nbsp;Adobe Analytics</a>
+                            <a class="dropdown-item">&nbsp;&nbsp;Matomo</a>
+                            <a class="dropdown-item">&nbsp;&nbsp;GA Premium</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link navmodel dropdown-toggle" data-toggle="dropdown" href="/model" id="navmodel">
+                            <span class="fa fa-list fa-lg"></span> Model
+                        </a>
+                        <div class="dropdown-menu navbar-dark" aria-labelledby="navconnect">
+                            <a class="dropdown-item" href="/model">Model</a>
+                            <a class="dropdown-item" href="/FilterList">&nbsp;&nbsp;Filters</a>
+                            <a class="dropdown-item" href="/AEPureStat\IntelligentFilter">&nbsp;&nbsp;Intelligent Filters</a>
+                            <a class="dropdown-item" href="/ResponseCurveList">&nbsp;&nbsp;Response Curves</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link navexperiment dropdown-toggle" data-toggle="dropdown" href="/experiment" id="navexperiment">
+                            <span class="fa fa-list fa-lg"></span> Experiment
+                        </a>
+                        <div class="dropdown-menu navbar-dark" aria-labelledby="navexperiment">
+                            <a class="dropdown-item" href="/experiment">Experiment</a>
+                            <a class="dropdown-item" href="/AERegression">&nbsp;&nbsp;Regression</a>
+                            <a class="dropdown-item" href="/AEPureStat">&nbsp;&nbsp;PureStat</a>
+                            <a class="dropdown-item" href="/AEBaseline">&nbsp;&nbsp;Baseline</a>
+                            <a class="dropdown-item" href="http://{% hostname %}:8080" target="_blank">&nbsp;&nbsp;JupyterLab</a>
+                            <a class="dropdown-item">&nbsp;&nbsp;Simulation</a>
+                            <a class="dropdown-item">&nbsp;&nbsp;Wavelet Analysis</a>
+                        </div>
+                    </li>
+                    <li class="nav-item"><a class="nav-link navvisualize" href="#"><span class="fa fa-list fa-lg"></span> Visualize</a></li>
+                    <li class="nav-item"><a class="nav-link navoptimize" href="#"><span class="fa fa-list fa-lg"></span> Optimize</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link navworkflow dropdown-toggle" data-toggle="dropdown" href="/workflow" id="navmodel">
+                            <span class="fa fa-list fa-lg"></span> Workflow
+                        </a>
+                        <div class="dropdown-menu navbar-dark" aria-labelledby="navworkflow">
+                            <a class="dropdown-item" href="/workflow">Workflow</a>
+                            <a class="dropdown-item" href="/workflow/plans">&nbsp;&nbsp;Plans</a>
+                            <a class="dropdown-item" href="/workflow/runs/0">&nbsp;&nbsp;Runs</a>
+                        </div>
+                    </li>
+                    <li clas
+                    <li class="nav-item"><a class="nav-link navdocument" href="/document"><span class="fa fa-list fa-lg"></span> Document</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link navadmin dropdown-toggle" data-toggle="dropdown" href="/admin" id="navadmin">
+                            <span class="fa fa-list fa-lg"></span> Admin
+                        </a>
+                        <div class="dropdown-menu navbar-dark" aria-labelledby="navadmin">
+                            <a class="dropdown-item" href="/admin" target="_blank">Django Admin</a>
+                            <a class="dropdown-item" href="/AEManage/grouptags">Group Tags</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+<header class="jumbotron">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="media">
+                <a href="/" border="0">
+                    <!-- <img src="{% static 'AEBase//images/LogoSmall.png' %}" border="0" class="align-bottom"> -->
+                <div class="media-body col-4">
+                    <H1 class="header-text">Dataset&nbsp;Explorer</H1>
+                </div></a>
+                <div class="col-5"></div>
+            </div>
+        </div>
+        <div class="row justify-content-center breadcrumbs">
+            {% block breadcrumbs %}
+            {% endblock %}
+            {% render_breadcrumbs %}
+        </div>
+    </div>
+</header>
+{# The Document Body #}
+<div class="content-main">
+    {% if messages %}
+      <ul class="messages">
+        {% for message in messages %}
+          <li class="{{ message.tags }}">{{ message }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+    {% block content %}
+        site base content, please replace
+    {% endblock content %}
+</div>
+{# The Footer #}
+<div class="footer">
+    <hr>
+    <div class="row justify-content-center">
+        <p>Copyright Stephen S Kelley 2020&nbsp;&nbsp;System: {{ SYSTEM_NAME }}</p>
+    </div>
+</div>
+{% block modal %}
+    <div class="modal fade" tabindex="-1" role="dialog" id="modal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            </div>
+        </div>
+    </div>
+{% endblock modal %}
+{% analytical_body_bottom %}
+</body>
+</html>

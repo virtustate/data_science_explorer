@@ -1,0 +1,17 @@
+
+{% extends extendTemplate %}
+{% load django_bootstrap_breadcrumbs %}
+{% block title %} {{ title }}{% endblock title %}
+{% block breadcrumbs %}
+    {{ block.super }}
+    {% breadcrumb title link %}
+{% endblock %}
+{% block content %}
+    <div>
+    <form method="post">
+        {% csrf_token %}
+        {{ form }}
+     </form>
+        {{ content|safe }}
+</div>
+{% endblock %}

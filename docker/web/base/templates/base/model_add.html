@@ -1,0 +1,20 @@
+<div id='form' class="formBorder">
+    <form method="post">
+        {% csrf_token %}
+        {% if Message %}<span class="error">{{ Message }}</span><br/>{% endif %}
+        {{ form.non_field_errors }}
+        <table class="table table-striped table-light table-bordered table-sm m-0">
+            {% for field in form.visible_fields %}
+                <tr>
+                    <th class="model_add_header" data-toggle="tooltip" title="{{ field.help_text }}">{{ field.label_tag }}</th>
+                    <td>{{ field }}{{ field.errors }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+        {% for field in form.hidden_fields %}
+            {{ field }}
+        {% endfor %}
+        <input class="hmlbutton" type="submit" value="Create" id="submit_button"/>
+        <input class="hmlbutton" type="button" value="Cancel" id="cancel_button" display="false" data-dismiss="modal"/>
+    </form>
+</div>

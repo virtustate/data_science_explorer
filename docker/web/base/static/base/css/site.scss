@@ -1,0 +1,49 @@
+$site-blue: #00A39A;
+$site-red: #ed0440;
+$site-lightgray: #cbcaca;
+$site-darkgray: #959492;
+$background-color: black;
+
+.site-blue {color: $site-blue}
+.site-lightgray { color: $site-lightgray}
+.site-red {color: $site-red }
+
+body{z-index: 0;}
+.error {color: $site-red;font-weight: bold }
+.formBorder {border-size: 1px; border-style: outset; border-color: $site-blue; padding: 10px; display: inline-block; margin: 5px;}
+.errorlist {color:$site-red}
+.menu-table {width: 600px; margin: 0 auto;}
+.menu-image {width: 160px; height: 120px}
+.menu-td {border-color: $background-color !important}
+
+// for messages framework
+li.debug {color: $site-darkgray; font-weight: bold }
+li.info {color: $site-darkgray; font-weight: bold}
+li.success {color: $site-blue; font-weight: bold}
+li.warning {color: $site-red; font-weight: bold}
+li.error {color: $site-red; font-weight: bold}
+
+// for model comparison
+.compare_reference {background-color: $site-lightgray}
+.compare_equal {background-color: $site-blue}
+.compare_different {background-color: $site-red}
+
+/* from mockup */
+.row-header { margin: 0px auto; padding: 0px auto;}
+.row-content { margin: 0px auto;}
+.footer {background-color: $background-color; margin: 0px auto; color:$site-lightgray;}
+.jumbotron {background: $background-color; align: top; color: $site-lightgray; height: 210px }
+.navbar-dark { background-color: $background-color; color:$site-lightgray;}
+.nav-item { list-style-type: none}
+.header-text {color: $site-lightgray; font-size: 40px; padding-top: 20px; }
+.content-main {text-align: center; padding-left: 20px;padding-right: 20px}
+.align-left {display: inline-block; text-align: left}
+
+.breadcrumb { background-color: $background-color;}
+.breadcrumb-item { color: $site-lightgray !important;}
+div.breadcrumbs { margin: 0; padding: 0; background-color: $background-color; height: 20px }
+
+/* overrides similar entries in base.css */
+.button, input[type=submit], input[type=button], .submit-row input, a.button { background: $site-blue; }
+a:link, a:visited { color: $site-blue; text-decoration: none;}
+a:hover { color: $site-darkgray;}
