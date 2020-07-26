@@ -3,3 +3,4 @@
 __pycache__
 /.gitignore
 /.vscode
+/django_start.code-workspace
