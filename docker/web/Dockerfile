@@ -13,4 +13,5 @@ RUN poetry config virtualenvs.create false && poetry install
 # RUN python manage.py makemigrations
 # RUN python manage.py migrate
 EXPOSE 8000
+EXPOSE 8088
 ENTRYPOINT ["/web/entrypoint.sh"]
