@@ -1,7 +1,7 @@
 
 FROM python:3
 RUN apt-get update && apt-get install -y \
-  telnet
+  telnet supervisor
 ENV PYTHONUNBUFFERED 1
 #WORKDIR "/web"
 RUN pip install poetry
