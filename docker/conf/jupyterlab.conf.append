@@ -1,3 +1,4 @@
 c.NotebookApp.ip = '0.0.0.0'
-c.NotebookApp.port = 8080
-c.NotebookApp.notebook_dir = '/home/ae/AttributionExplorer/src/Notebooks'
+c.NotebookApp.port = 8088
+c.NotebookApp.notebook_dir = '/web/notebooks'
+c.NotebookApp.password = u'sha1:d863f7e76ff7:e7ce6f335e7969b3a7521f0c208b4f57ad1427bd'

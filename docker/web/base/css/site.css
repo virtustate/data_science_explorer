@@ -15,7 +15,7 @@ body {
   font-weight: bold; }
 
 .formBorder {
-  border-size: 1px;
+  border-width: 1px;
   border-style: outset;
   border-color: #00A39A;
   padding: 10px;
@@ -31,7 +31,8 @@ body {
 
 .menu-image {
   width: 160px;
-  height: 120px; }
+  height: 120px; 
+}
 
 .menu-td {
   border-color: black !important; }

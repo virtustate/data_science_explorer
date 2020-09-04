@@ -11,7 +11,7 @@
 {# Make modifiable head elements #}
 <head>
     {% analytical_head_top %}
-    <title>{% block title %}base title, please override {% endblock title %} | Dataset Explorer</title>
+    <title>{% block title %}base title, please override {% endblock title %} | Data Science Explorer</title>
     {% block head_favicon %}
         <link rel="icon" type="image/png" href="{% static 'base/images/favicon.png' %}">
     {% endblock head_favicon %}
@@ -100,10 +100,8 @@
                         </a>
                         <div class="dropdown-menu navbar-dark" aria-labelledby="navexperiment">
                             <a class="dropdown-item" href="/experiment">Experiment</a>
-                            <a class="dropdown-item" href="/AERegression">&nbsp;&nbsp;Regression</a>
-                            <a class="dropdown-item" href="/AEPureStat">&nbsp;&nbsp;PureStat</a>
-                            <a class="dropdown-item" href="/AEBaseline">&nbsp;&nbsp;Baseline</a>
-                            <a class="dropdown-item" href="http://{% hostname %}:8080" target="_blank">&nbsp;&nbsp;JupyterLab</a>
+                            <a class="dropdown-item">&nbsp;&nbsp;Regression</a>
+                            <a class="dropdown-item" href="http://{% hostname %}:8088" target="_blank">&nbsp;&nbsp;JupyterLab</a>
                             <a class="dropdown-item">&nbsp;&nbsp;Simulation</a>
                             <a class="dropdown-item">&nbsp;&nbsp;Wavelet Analysis</a>
                         </div>
@@ -139,14 +137,11 @@
 <header class="jumbotron">
     <div class="container">
         <div class="row justify-content-center">
-            <div class="media">
                 <a href="/" border="0">
                     <!-- <img src="{% static 'AEBase//images/LogoSmall.png' %}" border="0" class="align-bottom"> -->
-                <div class="media-body col-4">
-                    <H1 class="header-text">Dataset&nbsp;Explorer</H1>
+                <div class="media-body col-4"></div>
+                    <H3 class="header-text">Data&nbsp;Science&nbsp;Explorer</H3>
                 </div></a>
-                <div class="col-5"></div>
-            </div>
         </div>
         <div class="row justify-content-center breadcrumbs">
             {% block breadcrumbs %}

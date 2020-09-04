@@ -24,6 +24,7 @@ django_fontawesome_5 = "^1.0.18"
 django_libsass = "^0.8"
 django_environ = "^0.4.5"
 jupyterlab = "^2.2.5"
+vega = "^3.4.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.4.3"
