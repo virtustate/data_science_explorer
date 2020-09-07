@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'django_extensions',
     'bootstrap4',
     'django_bootstrap_breadcrumbs',
     'sass_processor',
@@ -68,7 +69,7 @@ STATICFILES_FINDERS = (
     'sass_processor.finders.CssFinder',
 )
 
-ROOT_URLCONF = 'web_site.urls'
+ROOT_URLCONF = 'base.urls'
 
 TEMPLATES = [
     {

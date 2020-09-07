@@ -23,8 +23,10 @@ django_analytical = "^2.6.0"
 django_fontawesome_5 = "^1.0.18"
 django_libsass = "^0.8"
 django_environ = "^0.4.5"
+django_extensions = "3.0.8"
 jupyterlab = "^2.2.5"
 vega = "^3.4.0"
+papermill = "^2.1.3"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.4.3"

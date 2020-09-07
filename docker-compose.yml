@@ -2,9 +2,11 @@
   version: '3'
     
   services:
-    db:
-        image: postgres
-        container_name: db
+    postgres:
+        build: ./docker/postgres
+        container_name: postgres
+        volumes:
+          - pgdata:/var/lib/postgresql/data
         environment:
           - POSTGRES_DB=django
           - POSTGRES_USER=django
@@ -12,8 +14,10 @@
         ports: 
           - "5432:5432"
     redis:
-        image: redis
+        build: ./docker/redis
         container_name: redis
+        volumes:
+          - ./docker/redis:/data
         ports:
           - "6379:6379"
     web:
@@ -21,10 +25,13 @@
       container_name: web
       volumes:
         - ./docker/web://web
-        - ./docker/conf://conf
       ports:
         - "8000:8000"
         - "8088:8088"
 
       depends_on:
-        - db
+        - postgres
+        - redis
+  volumes:
+    pgdata:
+        external: true

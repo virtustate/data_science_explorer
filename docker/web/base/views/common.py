@@ -4,7 +4,7 @@ from django.http import HttpResponse
 
 # Create your views here.
 
-class CheckView(View):
-    template_name = 'base/check.html'
+class IndexView(View):
+    template_name = 'base/index.html'
     def get(self, request, *args, **kwargs):
         return render(request, self.template_name, {})

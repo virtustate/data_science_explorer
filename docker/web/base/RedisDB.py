@@ -10,7 +10,7 @@ class RedisDB:
     maximum_databases = 100
 
     def __init__(self, dataset_id=0):
-        self.server = 'localhost'
+        self.server = 'redis'
         self.port = 6379
         self.dataset_id = dataset_id
         if dataset_id == 0:
