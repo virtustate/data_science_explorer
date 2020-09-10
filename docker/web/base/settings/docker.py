@@ -10,3 +10,5 @@ DATABASES = {
         'PORT': 5432,
     }
 }
+
+SYSTEM_NAME = 'docker'

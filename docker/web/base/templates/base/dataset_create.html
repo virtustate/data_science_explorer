@@ -1,0 +1,12 @@
+{% extends 'base/dataset_list.html' %}
+{% load django_bootstrap_breadcrumbs %}
+{% block title %}Create Dataset{% endblock title %}
+{% block breadcrumbs %}
+    {{ block.super }}
+    {% breadcrumb 'Create Dataset' '/dataset/create' %}
+{% endblock %}
+
+{% block content %}
+{% include "base/model_add.html" %}
+{% endblock %}
+

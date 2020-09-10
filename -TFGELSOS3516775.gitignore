@@ -1,9 +1,7 @@
 
 /docker/web/base/settings/.env
 __pycache__
-.gitignore
 /.vscode
 /django_start.code-workspace
 /docker/web/notebooks/.ipynb_checkpoints
 /docker/redis/appendonly.aof
-/docker/web/venv

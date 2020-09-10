@@ -15,9 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from .views import IndexView
+from .views import IndexView,DatasetListView,DatasetCreateView
+
 
 urlpatterns = [
     path('admin/', admin.site.urls,name='admin'),
-    path('',IndexView.as_view(),name='index')
+    path('',IndexView.as_view(),name='index'),
+    path('dataset/',DatasetListView.as_view(),name='dataset_list',),
+    path('dataset/create',DatasetCreateView.as_view(),name='dataset_create'),
 ]

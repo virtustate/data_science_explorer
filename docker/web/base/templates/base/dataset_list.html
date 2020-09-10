@@ -1,0 +1,38 @@
+{% extends 'base/base.html' %}
+{% load django_bootstrap_breadcrumbs %}
+{% block title %}Dataset List{% endblock title %}
+{% block breadcrumbs %}
+    {{ block.super }}
+    {% breadcrumb 'Dataset List' '/dataset' %}
+{% endblock %}
+
+{% block content %}
+    <div align="center" class="formBorder">
+        <a href="/dataset/create">Create Dataset</a>
+        {% if dataset_list %}
+            <table class="table table-striped table-light table-bordered table-sm m-0">
+                <tr>
+                    <th>id</th>
+                    <th>name</th>
+                    <th>connection type</th>
+                    <th>redis db</th>
+                    <th>last loaded</th>
+                    <th>Jupyterlab</th>
+                </tr>
+                {% for dataset in dataset_list %}
+                <tr>
+                    <td>{{ dataset.id }}</td>
+                    <th>{{ dataset.name }}</th>
+                    <th>{{ dataset.connection_type }}</th>
+                    <th>{{ dataset.redis_db }}</th>
+                    <th>{{ dataset.last_loaded }}</th>
+                    <th>Jupyterlab</th>
+                </tr>
+                {% endfor %}
+            </table>
+            {% else %}
+                <p>There are no datasets.</p>
+            {% endif %}
+            <a href="/flush_all_redis_db">Flush all redis DB's.</a>
+    </div>
+{% endblock %}

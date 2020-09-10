@@ -16,6 +16,8 @@ import environ
 env = environ.Env(DEBUG=(bool, False), )
 environ.Env.read_env()
 
+SNOWFLAKE_CONNECTION = env('SNOWFLAKE_CONNECTION')
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
