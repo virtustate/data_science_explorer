@@ -1,5 +1,5 @@
 <div id='form' class="formBorder">
-    <form method="post">
+    <form method="post" enctype=multipart/form-data>
         {% csrf_token %}
         {% if Message %}<span class="error">{{ Message }}</span><br/>{% endif %}
         {{ form.non_field_errors }}

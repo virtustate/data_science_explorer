@@ -1,4 +1,5 @@
 {% extends 'base/base.html' %}
+{% load base_tags  %}
 {% load django_bootstrap_breadcrumbs %}
 {% block title %}Dataset List{% endblock title %}
 {% block breadcrumbs %}
@@ -15,17 +16,23 @@
                     <th>id</th>
                     <th>name</th>
                     <th>connection type</th>
+                    <th>created</th>
                     <th>redis db</th>
                     <th>last loaded</th>
+                    <th>view</th>
+                    <th>delete</th>
                     <th>Jupyterlab</th>
                 </tr>
                 {% for dataset in dataset_list %}
                 <tr>
                     <td>{{ dataset.id }}</td>
-                    <th>{{ dataset.name }}</th>
-                    <th>{{ dataset.connection_type }}</th>
-                    <th>{{ dataset.redis_db }}</th>
-                    <th>{{ dataset.last_loaded }}</th>
+                    <td>{{ dataset.name }}</td>
+                    <td>{{ dataset.connection_type }}</td>
+                    <td>{{ dataset.created }}</td>
+                    <td>{% get_item2keys redis_metadata dataset.id 'db' %}</td>
+                    <td>{% get_item2keys redis_metadata dataset.id 'lastLoaded' %}</td>
+                    <td><a href="view/{{ dataset.id }}">view</a></td>
+                    <td><a href="delete/{{ dataset.id }}">delete</a></td>
                     <th>Jupyterlab</th>
                 </tr>
                 {% endfor %}

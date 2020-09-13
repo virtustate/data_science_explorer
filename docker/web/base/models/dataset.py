@@ -6,9 +6,11 @@ CONNECTION_TYPE_CHOICES = (
     ('Snowflake', 'Snowflake'),
 )
 
+def filer_on_delete():
+    print('filter_on_delete')
+    
 class Dataset(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(null=False, default='', max_length=50)
     connection_type = models.CharField(choices=CONNECTION_TYPE_CHOICES, default='csv', max_length=20)
-    redis_db = models.IntegerField(null=True)
-    last_loaded = models.DateTimeField(null=True)
+    created = models.DateTimeField(null=True)

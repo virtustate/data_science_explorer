@@ -1,0 +1,12 @@
+{% extends 'base/dataset_list.html' %}
+{% load django_bootstrap_breadcrumbs %}
+{% block title %}View Dataset{% endblock title %}
+{% block breadcrumbs %}
+    {{ block.super }}
+    {% breadcrumb 'View Dataset' '/dataset/view' %}
+{% endblock %}
+
+{% block content %}
+{{ html|safe}}
+{% endblock %}
+

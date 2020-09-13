@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from .views import IndexView,DatasetListView,DatasetCreateView
+from .views import *
 
 
 urlpatterns = [
@@ -23,4 +23,6 @@ urlpatterns = [
     path('',IndexView.as_view(),name='index'),
     path('dataset/',DatasetListView.as_view(),name='dataset_list',),
     path('dataset/create',DatasetCreateView.as_view(),name='dataset_create'),
+    path('dataset/delete/<int:pk>', DatasetDeleteView.as_view(), name='dataset_delete'),
+    path('dataset/view/<int:pk>', DatasetViewView.as_view(), name='dataset_view'),
 ]

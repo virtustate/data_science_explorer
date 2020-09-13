@@ -2,7 +2,7 @@ import redis
 import datetime
 import pandas
 from io import StringIO
-
+from django.conf import settings
 
 # wrapper class for Redis functionality
 class RedisDB:
@@ -10,8 +10,8 @@ class RedisDB:
     maximum_databases = 100
 
     def __init__(self, dataset_id=0):
-        self.server = 'redis'
-        self.port = 6379
+        self.server = settings.REDIS_SERVER
+        self.port = settings.REDIS_PORT
         self.dataset_id = dataset_id
         if dataset_id == 0:
             self.db_number = 0
