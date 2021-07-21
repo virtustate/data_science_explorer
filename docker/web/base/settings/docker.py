@@ -12,3 +12,8 @@ DATABASES = {
 }
 
 SYSTEM_NAME = 'docker'
+
+REDIS_SERVER = 'redis'
+REDIS_PORT = '6379'
+
+

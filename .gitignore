@@ -7,3 +7,4 @@ __pycache__
 /docker/web/notebooks/.ipynb_checkpoints
 /docker/redis/appendonly.aof
 /docker/web/venv
+docker/redis/dump.rdb
