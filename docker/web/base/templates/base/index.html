@@ -3,9 +3,9 @@
 {% load django_bootstrap_breadcrumbs %}
 {% block title %}{{ title }}{% endblock title %}
 {% block breadcrumbs %}
-    {{ block.super }}
-    {% breadcrumb title '/FilterDetail' %}
+    {% clear_breadcrumbs %}
+    {% breadcrumb_safe '<span class="fa fa-home fa-lg"></span>' "/" %}
 {% endblock %}
 {% block content %}
-    this is the content!
+    this is the home content!
 {% endblock %}

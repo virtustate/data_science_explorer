@@ -15,7 +15,7 @@ body {
   font-weight: bold; }
 
 .formBorder {
-  border-size: 1px;
+  border-width: 1px;
   border-style: outset;
   border-color: #00A39A;
   padding: 10px;
@@ -78,13 +78,7 @@ li.error {
   margin: 0px auto;
   color: #cbcaca; }
 
-.jumbotron {
-  background: black;
-  align: top;
-  color: #cbcaca;
-  height: 210px; }
-
-.navbar-dark {
+.navbar-dark, .header {
   background-color: black;
   color: #cbcaca; }
 
@@ -94,7 +88,8 @@ li.error {
 .header-text {
   color: #cbcaca;
   font-size: 40px;
-  padding-top: 20px; }
+  padding-top: 17px;
+  padding-bottom: 0px; }
 
 .content-main {
   text-align: center;
@@ -106,16 +101,13 @@ li.error {
   text-align: left; }
 
 .breadcrumb {
-  background-color: black; }
+  background: black;
+  color: #cbcaca;
+  text-align: center;
+  padding: 0px; }
 
 .breadcrumb-item {
   color: #cbcaca !important; }
-
-div.breadcrumbs {
-  margin: 0;
-  padding: 0;
-  background-color: black;
-  height: 20px; }
 
 /* overrides similar entries in base.css */
 .button, input[type=submit], input[type=button], .submit-row input, a.button {

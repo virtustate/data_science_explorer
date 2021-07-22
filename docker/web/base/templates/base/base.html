@@ -10,6 +10,7 @@
 <html lang="en">
 {# Make modifiable head elements #}
 <head>
+    {% fontawesome_5_static %} 
     {% analytical_head_top %}
     <title>{% block title %}base title, please override {% endblock title %} | Data Science Explorer</title>
     {% block head_favicon %}
@@ -74,7 +75,7 @@
                             <span class="fa fa-list fa-lg"></span> Connect
                         </a>
                         <div class="dropdown-menu navbar-dark" aria-labelledby="navconnect">
-                            <a class="dropdown-item" href="/connect">Connect</a>
+                            <a class="dropdown-item" href="/dataset">Datasets</a>
                             <a class="dropdown-item" href="/DatasetList">&nbsp;&nbsp;AttributionTool</a>
                             <a class="dropdown-item" href="/ISpot">&nbsp;&nbsp;iSpot</a>
                             <a class="dropdown-item" href="/WAMPerSecond">&nbsp;&nbsp;Second Granularity WAM</a>
@@ -118,7 +119,6 @@
                             <a class="dropdown-item" href="/workflow/runs/0">&nbsp;&nbsp;Runs</a>
                         </div>
                     </li>
-                    <li clas
                     <li class="nav-item"><a class="nav-link navdocument" href="/document"><span class="fa fa-list fa-lg"></span> Document</a></li>
                     <li class="nav-item dropdown">
                         <a class="nav-link navadmin dropdown-toggle" data-toggle="dropdown" href="/admin" id="navadmin">
@@ -134,22 +134,17 @@
         </div>
     </div>
 </nav>
-<header class="jumbotron">
-    <div class="container">
-        <div class="row justify-content-center">
-                <a href="/" border="0">
-                    <!-- <img src="{% static 'AEBase//images/LogoSmall.png' %}" border="0" class="align-bottom"> -->
-                <div class="media-body col-4"></div>
-                    <H3 class="header-text">Data&nbsp;Science&nbsp;Explorer</H3>
-                </div></a>
-        </div>
-        <div class="row justify-content-center breadcrumbs">
+<div class='header'>
+    <div class="row justify-content-center">
+            <a href="/" border="0">
+                <!-- <img src="{% static 'AEBase//images/LogoSmall.png' %}" border="0" class="align-bottom"> -->
+            <div class="media-body col-4"></div>
+                <H3 class="header-text">Data&nbsp;Science&nbsp;Explorer</H3>
+            </div></a>
             {% block breadcrumbs %}
             {% endblock %}
             {% render_breadcrumbs %}
-        </div>
-    </div>
-</header>
+</div>        
 {# The Document Body #}
 <div class="content-main">
     {% if messages %}

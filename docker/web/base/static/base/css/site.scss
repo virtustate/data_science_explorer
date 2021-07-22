@@ -10,7 +10,7 @@ $background-color: black;
 
 body{z-index: 0;}
 .error {color: $site-red;font-weight: bold }
-.formBorder {border-size: 1px; border-style: outset; border-color: $site-blue; padding: 10px; display: inline-block; margin: 5px;}
+.formBorder {border-width: 1px; border-style: outset; border-color: $site-blue; padding: 10px; display: inline-block; margin: 5px;}
 .errorlist {color:$site-red}
 .menu-table {width: 600px; margin: 0 auto;}
 .menu-image {width: 160px; height: 120px}
@@ -32,16 +32,17 @@ li.error {color: $site-red; font-weight: bold}
 .row-header { margin: 0px auto; padding: 0px auto;}
 .row-content { margin: 0px auto;}
 .footer {background-color: $background-color; margin: 0px auto; color:$site-lightgray;}
-.jumbotron {background: $background-color; align: top; color: $site-lightgray; height: 210px }
-.navbar-dark { background-color: $background-color; color:$site-lightgray;}
+//.jumbotron {background: $background-color; align: top; color: $site-lightgray; height: 50px }
+.navbar-dark, .header { background-color: $background-color; color:$site-lightgray;}
 .nav-item { list-style-type: none}
-.header-text {color: $site-lightgray; font-size: 40px; padding-top: 20px; }
-.content-main {text-align: center; padding-left: 20px;padding-right: 20px}
+.header-text {color: $site-lightgray; font-size: 40px; padding-top: 17px; padding-bottom: 0px; }
+.content-main {text-align: center; padding-left: 20px; padding-right: 20px}
 .align-left {display: inline-block; text-align: left}
 
-.breadcrumb { background-color: $background-color;}
+.breadcrumb {background: $background-color; color: $site-lightgray; text-align: center; padding: 0px}
+// .breadcrumb { background-color: $background-color;}
 .breadcrumb-item { color: $site-lightgray !important;}
-div.breadcrumbs { margin: 0; padding: 0; background-color: $background-color; height: 20px }
+//div.breadcrumbs { margin: 0; padding: 0; background-color: $background-color; height: 20px }
 
 /* overrides similar entries in base.css */
 .button, input[type=submit], input[type=button], .submit-row input, a.button { background: $site-blue; }

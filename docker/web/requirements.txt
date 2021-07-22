@@ -7,6 +7,7 @@ django_redis
 snowflake_sqlalchemy
 matplotlib
 plotly
+
 django-bootstrap-breadcrumbs
 django_bootstrap4
 django_sass_processor
@@ -15,9 +16,17 @@ django_fontawesome_5
 django_libsass
 django_environ
 django_extensions
+
+django-filer
+django-mptt
+easy_thumbnails
+django-polymorphic
+Pillow
+
 jupyterlab
 vega
 papermill
+
 pytest
 flake8
 black

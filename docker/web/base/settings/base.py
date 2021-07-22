@@ -57,6 +57,10 @@ INSTALLED_APPS = [
     'analytical',
     'fontawesome_5',
 
+    'easy_thumbnails',
+    'filer',
+    'mptt',
+
     'base',
 ]
 

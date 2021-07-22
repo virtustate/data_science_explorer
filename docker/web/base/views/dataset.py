@@ -65,5 +65,5 @@ class DatasetViewView(View):
             html = f'{df.head(10).to_html()}<br/>...<br/>{df.tail(10).to_html()}'
         else:
             html = df.to_html()
-        html = f'{df.shape}<br/>{html}'
+        html = f'shape: {df.shape}<br/>{html}'
         return render(request, 'base/dataset_view.html', {'html': html})
