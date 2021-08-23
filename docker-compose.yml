@@ -7,6 +7,7 @@
         container_name: postgres
         volumes:
           - pgdata:/var/lib/postgresql/data
+          - ./docker/postgres/docker_postgres_init.sql:/docker-entrypoint-initdb.d/docker_postgres_init.sql
         environment:
           - POSTGRES_DB=django
           - POSTGRES_USER=django
@@ -20,6 +21,28 @@
           - ./docker/redis:/data
         ports:
           - "6379:6379"
+    minio:
+      build: ./docker/minio
+      container_name: minio
+      volumes:
+        - ./docker/minio:/data
+      ports:
+        - "9000:9000"
+        - "9001:9001"
+    dagster:
+      build: ./docker/dagster
+      container_name: dagster
+      volumes:
+        - ./docker/dagster:/data
+      ports:
+        - "3000:3000"
+      environment: 
+        - DAGSTER_PG_USERNAME=dagster
+        - DAGSTER_PG_PASSWORD=dagster
+        - DAGSTER_PG_HOST=postgres
+        - DAGSTER_PG_DB=dagster
+      depends_on:
+      - postgres
     web:
       build: ./docker/web
       container_name: web
@@ -28,10 +51,14 @@
       ports:
         - "8000:8000"
         - "8088:8088"
-
       depends_on:
         - postgres
         - redis
+    spark:
+      build: ./docker/spark
+      container_name: spark
+      ports: 
+        - "8888:8888"
   volumes:
     pgdata:
         external: false

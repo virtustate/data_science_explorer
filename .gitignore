@@ -8,3 +8,4 @@ __pycache__
 /docker/redis/appendonly.aof
 /docker/web/venv
 docker/redis/dump.rdb
+/docker/minio/data
