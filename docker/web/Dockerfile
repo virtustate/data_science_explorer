@@ -1,12 +1,15 @@
 
 FROM python:3
+# HOw to integrate Spark with Drupal??
+# FROM jupyter/all-spark-notebook
 RUN apt-get update && apt-get install -y telnet supervisor nano nodejs npm
 ENV PYTHONUNBUFFERED 1
-
-RUN /usr/local/bin/python -m pip install --upgrade pip
+RUN python -m pip install --upgrade pip
 COPY ./requirements.txt /requirements.txt
-RUN pip install -r requirements.txt
+RUN pip install -r /requirements.txt
 RUN python -m mitoinstaller install
+RUN jupyter labextension install jupyterlab-plotly @jupyter-widgets/jupyterlab-manager jupyterlab-dash jupyterlab-chart-editor @jupyterlab/latex
+
 
 # poetry takes a long time to process dependencies
 # COPY ./pyproject.toml /pyproject.toml

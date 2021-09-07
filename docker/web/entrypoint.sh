@@ -2,7 +2,7 @@
 cp /web/conf/supervisor/jupyter.conf /etc/supervisor/conf.d/jupyter.conf
 mkdir /var/log/jupyterlab/
 jupyter notebook --generate-config
-cat /root/.jupyter/jupyter_notebook_config.py /web/conf/jupyterlab.conf.append > /root/.jupyter/jupyter_notebook_config.py
+cp /web/conf/jupyter_server_config.py /root/.jupyter/jupyter_server_config.py
 /etc/init.d/supervisor start
 cd web
 python manage.py makemigrations

@@ -50,7 +50,7 @@ def double_line(df, column1, column2, column_x, title1=None, title2=None, title_
     return div
 
 
-def single_line(df, column_x, column_y, title_x=None, title_y=None, title=None):
+def single_line(df, column_x='x', column_y='y', title_x=None, title_y=None, title=None):
     if title_x is None:
         title_x = column_x
     if title_y is None:

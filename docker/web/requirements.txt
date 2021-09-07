@@ -33,3 +33,7 @@ black
 pylint
 
 mitoinstaller
+pymc3
+pycaret
+torch
+pyro-ppl

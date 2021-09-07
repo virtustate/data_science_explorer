@@ -4,7 +4,7 @@ __pycache__
 .gitignore
 /.vscode
 /django_start.code-workspace
-/docker/web/notebooks/.ipynb_checkpoints
+.ipynb_checkpoints
 /docker/redis/appendonly.aof
 /docker/web/venv
 docker/redis/dump.rdb
