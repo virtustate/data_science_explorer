@@ -1,7 +1,7 @@
 from django.views.generic import View
 from django.shortcuts import render,redirect
 from django.conf import settings
-from base.models.dataset import Dataset,CONNECTION_TYPE_CHOICES
+from base.models.dataset import Dataset,CONNECTION_TYPE_CHOICES, DELIMTER_CHOICES
 from django import forms
 import base.helpers as helpers
 from base.redis_db import RedisDB
@@ -14,6 +14,8 @@ class DatasetCreateForm(forms.Form):
     name = forms.CharField(max_length=50,required=True)
     connection_type = forms.ChoiceField(choices=CONNECTION_TYPE_CHOICES)
     file_upload = forms.FileField()
+    delimiter = forms.ChoiceField(choices=DELIMTER_CHOICES)
+    header = forms.BooleanField(required=False, initial=True)
 
 class DatasetListView(View):
     def get(self,request,*args,**kwargs):
@@ -35,13 +37,17 @@ class DatasetCreateView(View):
                     name=form.cleaned_data['name'],
                     connection_type=form.cleaned_data['connection_type'],
                     created = datetime.now(),
+                    delimiter = form.cleaned_data['delimiter'],
+                    header = form.cleaned_data['header'],
             )
-            df=pandas.read_csv(form.cleaned_data['file_upload'].file,header=None)
             a_data_set.save()
-            my_redis = RedisDB(a_data_set.id)
-            my_redis.start_load()
-            my_redis.set('dataframe',df.to_csv())
-            my_redis.end_load()
+            a_data_set.load_file_to_redis(form.cleaned_data['file_upload'].file)
+            # df=pandas.read_csv(form.cleaned_data['file_upload'].file,header=None)
+            # a_data_set.save()
+            # my_redis = RedisDB(a_data_set.id)
+            # my_redis.start_load()
+            # my_redis.set('dataframe',df.to_csv())
+            # my_redis.end_load()
             messages.success(request, 'Dataset added.')
             return redirect('/dataset')
         else:

@@ -1,5 +1,3 @@
-
-/docker/web/base/settings/.env
 __pycache__
 .gitignore
 /.vscode
@@ -9,3 +7,5 @@ __pycache__
 /docker/web/venv
 docker/redis/dump.rdb
 /docker/minio/data
+/docker/web/secret_endpoints.py
+/docker/web/notebooks/minio.ipynb

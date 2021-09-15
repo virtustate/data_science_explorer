@@ -16,7 +16,6 @@ import environ
 env = environ.Env(DEBUG=(bool, False), )
 environ.Env.read_env()
 
-SNOWFLAKE_CONNECTION = env('SNOWFLAKE_CONNECTION')
 DATABASES = {
     'default': env.db(),
 }

@@ -37,3 +37,4 @@ pymc3
 pycaret
 torch
 pyro-ppl
+minio
