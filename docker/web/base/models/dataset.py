@@ -1,5 +1,7 @@
+import numpy
+from django.contrib.postgres.fields.array import ArrayField
 from django.db import models
-import datetime
+from django.db.models.fields import CharField
 from filer.fields.file import FilerFileField
 import pandas
 from base.redis_db import RedisDB
@@ -21,6 +23,7 @@ class Dataset(models.Model):
     file = FilerFileField
     delimiter = models.CharField(choices=DELIMTER_CHOICES, max_length=10, default=',')
     header = models.BooleanField(default=True)
+    columns = ArrayField(CharField(null=True, max_length=100), null=True)
 
     def __str__(self):
         return self.name
@@ -32,6 +35,7 @@ class Dataset(models.Model):
         my_redis.start_load()
         my_redis.set('dataframe', df.to_csv())
         my_redis.end_load()
+        return list(df.columns)
 
     
 

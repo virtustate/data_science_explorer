@@ -1,0 +1,38 @@
+{% extends 'base/index.html' %}
+{% load base_tags  %}
+{% load django_bootstrap_breadcrumbs %}
+{% block title %}Dataset List{% endblock title %}
+{% block breadcrumbs %}
+    {{ block.super }}
+    {% breadcrumb 'Regression List' '/regression' %}
+{% endblock %}
+
+{% block content %}
+    <div align="center" class="formBorder">
+        <a href="/regression/create">Create Regression</a>
+        {% if regression_list %}
+            <table class="table table-striped table-light table-bordered table-sm m-0">
+                <tr>
+                    <th>id</th>
+                    <th>name</th>
+                    <th>created</th>
+                    <th>view</th>
+                    <th>delete</th>
+                    <th>Jupyterlab</th>
+                </tr>
+                {% for regression in regression_list %}
+                <tr>
+                    <td>{{ regression.id }}</td>
+                    <td>{{ regression.name }}</td>
+                    <td>{{ regression.created }}</td>
+                    <td><a href="view/{{ regression.id }}">view</a></td>
+                    <td><a href="delete/{{ regression.id }}">delete</a></td>
+                    <th>Jupyterlab</th>
+                </tr>
+                {% endfor %}
+            </table>
+            {% else %}
+                <p>There are no regressions.</p>
+            {% endif %}
+    </div>
+{% endblock %}

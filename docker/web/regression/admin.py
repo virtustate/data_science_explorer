@@ -1,3 +1,4 @@
 from django.contrib import admin
+from .models.regression import Regression
 
-# Register your models here.
+admin.site.register(Regression)

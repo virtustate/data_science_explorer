@@ -9,3 +9,4 @@ docker/redis/dump.rdb
 /docker/minio/data
 /docker/web/secret_endpoints.py
 /docker/web/base/migrations
+migrations

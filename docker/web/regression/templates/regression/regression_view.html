@@ -1,0 +1,12 @@
+{% extends 'regression/regression_list.html' %}
+{% load django_bootstrap_breadcrumbs %}
+{% block title %}View Regression{% endblock title %}
+{% block breadcrumbs %}
+    {{ block.super }}
+    {% breadcrumb 'View Regression' '/regression/view' %}
+{% endblock %}
+
+{% block content %}
+{{ html|safe}}
+{% endblock %}
+

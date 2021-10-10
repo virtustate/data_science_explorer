@@ -8,12 +8,12 @@ from django.contrib.postgres.fields import ArrayField
 
 class Analysis(models.Model):
     id = models.AutoField(primary_key=True)
-    name = models.CharField(null=False, default='', max_length=50)
-    created = models.DateTimeField(null=True)
+    name = models.CharField(null=False, max_length=50)
+    created = models.DateTimeField()
     dataset = models.ForeignKey(Dataset, on_delete=models.CASCADE, related_name='AnalysisDataset')
-    dependent_column = models.CharField(null=False, default='', max_length=100) 
-    datetime_column = models.CharField(null=False, default='', max_length=100)
-    independent_columns = ArrayField(CharField(max_length=100))
+    dependent_column = models.CharField(null=True, max_length=100) 
+    datetime_column = models.CharField(null=True, max_length=100)
+    independent_columns = ArrayField(CharField(null=True, max_length=100), null=True)
 
     class Meta:
         abstract = True

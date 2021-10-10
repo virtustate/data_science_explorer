@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from .views import *
 
 
@@ -25,4 +25,7 @@ urlpatterns = [
     path('dataset/create',DatasetCreateView.as_view(),name='dataset_create'),
     path('dataset/delete/<int:pk>', DatasetDeleteView.as_view(), name='dataset_delete'),
     path('dataset/view/<int:pk>', DatasetViewView.as_view(), name='dataset_view'),
+]
+urlpatterns += [
+    path(r'regression/', include('regression.urls', namespace='regression')),
 ]

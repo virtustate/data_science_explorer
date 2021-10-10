@@ -1,14 +1,11 @@
 from django.views.generic import View
 from django.shortcuts import render,redirect
-from django.conf import settings
 from base.models.dataset import Dataset,CONNECTION_TYPE_CHOICES, DELIMTER_CHOICES
 from django import forms
-import base.helpers as helpers
 from base.redis_db import RedisDB
 from django.contrib import messages
-import pandas 
-import io
 from datetime import datetime
+from array import array
 
 class DatasetCreateForm(forms.Form):
     name = forms.CharField(max_length=50,required=True)
@@ -41,17 +38,13 @@ class DatasetCreateView(View):
                     header = form.cleaned_data['header'],
             )
             a_data_set.save()
-            a_data_set.load_file_to_redis(form.cleaned_data['file_upload'].file)
-            # df=pandas.read_csv(form.cleaned_data['file_upload'].file,header=None)
-            # a_data_set.save()
-            # my_redis = RedisDB(a_data_set.id)
-            # my_redis.start_load()
-            # my_redis.set('dataframe',df.to_csv())
-            # my_redis.end_load()
+            columns = a_data_set.load_file_to_redis(form.cleaned_data['file_upload'].file)
+            a_data_set.columns = columns
+            a_data_set.save()
             messages.success(request, 'Dataset added.')
             return redirect('/dataset')
         else:
-            return render(request, 'base/dataset_create.html', {'form': form})
+            return render(request, self.template_name, {'form': form})
 
 class DatasetDeleteView(View):
     def get(self, request, *args, **kwargs):
@@ -66,10 +59,11 @@ class DatasetViewView(View):
     def get(self, request, *args, **kwargs):
         dataset_id = kwargs['pk']
         my_redis = RedisDB(dataset_id)
+        a_dataset = Dataset.objects.filter(id=dataset_id)[0]
         df = my_redis.get_df('dataframe')
         if df.shape[0] > 50:
             html = f'{df.head(10).to_html()}<br/>...<br/>{df.tail(10).to_html()}'
         else:
             html = df.to_html()
-        html = f'shape: {df.shape}<br/>{html}'
+        html = f'shape: {df.shape}<br/>columns: {a_dataset.columns}</b>{html}'
         return render(request, 'base/dataset_view.html', {'html': html})

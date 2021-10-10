@@ -60,7 +60,8 @@ INSTALLED_APPS = [
     'filer',
     'mptt',
 
-    'base',
+    'base.apps.BaseConfig',
+    'regression.apps.RegressionConfig'
 ]
 
 MIDDLEWARE = [

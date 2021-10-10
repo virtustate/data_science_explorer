@@ -38,3 +38,4 @@ pycaret
 torch
 pyro-ppl
 minio
+pdoc3
