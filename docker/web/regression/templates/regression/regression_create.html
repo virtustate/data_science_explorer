@@ -5,7 +5,33 @@
     {{ block.super }}
     {% breadcrumb 'Create Regression' '/regression/create' %}
 {% endblock %}
-
+{% block javascript_page %}
+    <script type="text/javascript">
+        function pagejq() {
+            // set members when field changes
+            $("#id_dataset").change(function () {
+                $.ajax({
+                    url: '/ajax/get_dataset_columns',
+                    data: {
+                        //'field': this.value,
+                        'dataset_id': $('#id_dataset').val()
+                    },
+                    dataType: 'json',
+                    success: function (data) {
+                        $('#id_independent_columns').empty();
+                        $.each(data, function (i,item) {
+                            $('#id_independent_columns').append($('<option>').text(item).attr('value', item));
+                        });
+                        $('#id_dependent_column').empty();
+                        $.each(data, function (i,item) {
+                            $('#id_dependent_column').append($('<option>').text(item).attr('value', item));
+                        });
+                    }
+                });
+            });
+        }
+    </script>
+{% endblock javascript_page %}
 {% block content %}
 {% include "base/model_add.html" %}
 {% endblock %}

@@ -5,7 +5,6 @@ from django import forms
 from base.redis_db import RedisDB
 from django.contrib import messages
 from datetime import datetime
-from array import array
 
 class DatasetCreateForm(forms.Form):
     name = forms.CharField(max_length=50,required=True)
@@ -65,5 +64,5 @@ class DatasetViewView(View):
             html = f'{df.head(10).to_html()}<br/>...<br/>{df.tail(10).to_html()}'
         else:
             html = df.to_html()
-        html = f'shape: {df.shape}<br/>columns: {a_dataset.columns}</b>{html}'
+        html = f'shape: {df.shape}<br/>columns: {a_dataset.columns}</b><br/>{df.info()}{html}'
         return render(request, 'base/dataset_view.html', {'html': html})

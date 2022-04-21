@@ -25,6 +25,8 @@ urlpatterns = [
     path('dataset/create',DatasetCreateView.as_view(),name='dataset_create'),
     path('dataset/delete/<int:pk>', DatasetDeleteView.as_view(), name='dataset_delete'),
     path('dataset/view/<int:pk>', DatasetViewView.as_view(), name='dataset_view'),
+
+    path('ajax/get_dataset_columns', ajax_get_dataset_columns, name='ajax_get_dataset_columns'),
 ]
 urlpatterns += [
     path(r'regression/', include('regression.urls', namespace='regression')),

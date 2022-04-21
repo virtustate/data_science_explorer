@@ -5,6 +5,8 @@ from io import StringIO
 from django.conf import settings
 
 # wrapper class for Redis functionality
+
+
 class RedisDB:
     chunkLength = 500 * 1000 * 1000  # strings have 512MB limit so split into list
     maximum_databases = 100

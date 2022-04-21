@@ -1,7 +1,7 @@
 {% extends 'base/index.html' %}
 {% load base_tags  %}
 {% load django_bootstrap_breadcrumbs %}
-{% block title %}Dataset List{% endblock title %}
+{% block title %}Regression List{% endblock title %}
 {% block breadcrumbs %}
     {{ block.super }}
     {% breadcrumb 'Regression List' '/regression' %}
@@ -16,6 +16,9 @@
                     <th>id</th>
                     <th>name</th>
                     <th>created</th>
+                    <th>dataset</th>
+                    <th>dependent column</th>
+                    <th>independent columns</th>
                     <th>view</th>
                     <th>delete</th>
                     <th>Jupyterlab</th>
@@ -25,6 +28,9 @@
                     <td>{{ regression.id }}</td>
                     <td>{{ regression.name }}</td>
                     <td>{{ regression.created }}</td>
+                    <td>{{regression.dataset}}</td>
+                    <td>{{regression.dependent_column}}</td>
+                    <td>{{regression.independent_columns}}</td>
                     <td><a href="view/{{ regression.id }}">view</a></td>
                     <td><a href="delete/{{ regression.id }}">delete</a></td>
                     <th>Jupyterlab</th>

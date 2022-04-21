@@ -1,12 +1,13 @@
 from django.db import models
 import datetime
+from base.models.ResultMixin import ResultMixin
 
 from django.db.models.fields import CharField
 from base.models.dataset import Dataset
 from django.contrib.postgres.fields import ArrayField
 
 
-class Analysis(models.Model):
+class Analysis(ResultMixin, models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(null=False, max_length=50)
     created = models.DateTimeField()
